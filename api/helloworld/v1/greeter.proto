@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package helloworld.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "chatbot/api/helloworld/v1;v1";
+option java_multiple_files = true;
+option java_package = "dev.kratos.api.helloworld.v1";
+option java_outer_classname = "HelloworldProtoV1";
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc ChatMsg (DingRequest) returns (DingReply) {
+    option (google.api.http) = {
+      post: "/ding"
+      body: "*"
+    };
+  }
+}
+
+// The request message containing the user's name.
+message DingRequest {
+  message User{
+    string dingtalkID  = 1;
+  }
+  string conversationID = 1;
+  repeated User atUsers = 2;
+  string chatbotUserID =3;
+  string msgID = 4;
+  string senderNick =5;
+  bool isAdmin =6;
+  int64 sessionWebhookExpiredTime =7;
+  int64 createAt =8;
+  string conversationType =9;
+  string senderID = 10;
+  string conversationTitle = 11;
+  bool   isInAtList = 12;
+  string sessionWebhook = 13;
+  Text text = 14;
+  string robotCode = 15;
+  string msgtype = 16;
+}
+
+message Text {
+   string content =1;
+}
+
+// The response message containing the greetings
+message DingReply {
+  string message = 1;
+}
+
+

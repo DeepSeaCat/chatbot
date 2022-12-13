@@ -1,0 +1,88 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: Greeter API
+    description: The greeting service definition.
+    version: 0.0.1
+paths:
+    /ding:
+        post:
+            tags:
+                - Greeter
+            description: Sends a greeting
+            operationId: Greeter_ChatMsg
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/helloworld.v1.DingRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/helloworld.v1.DingReply'
+components:
+    schemas:
+        helloworld.v1.DingReply:
+            type: object
+            properties:
+                message:
+                    type: string
+            description: The response message containing the greetings
+        helloworld.v1.DingRequest:
+            type: object
+            properties:
+                conversationID:
+                    type: string
+                atUsers:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/helloworld.v1.DingRequest_User'
+                chatbotUserID:
+                    type: string
+                msgID:
+                    type: string
+                senderNick:
+                    type: string
+                isAdmin:
+                    type: boolean
+                sessionWebhookExpiredTime:
+                    type: integer
+                    format: int64
+                createAt:
+                    type: integer
+                    format: int64
+                conversationType:
+                    type: string
+                senderID:
+                    type: string
+                conversationTitle:
+                    type: string
+                isInAtList:
+                    type: boolean
+                sessionWebhook:
+                    type: string
+                text:
+                    $ref: '#/components/schemas/helloworld.v1.Text'
+                robotCode:
+                    type: string
+                msgtype:
+                    type: string
+            description: The request message containing the user's name.
+        helloworld.v1.DingRequest_User:
+            type: object
+            properties:
+                dingtalkID:
+                    type: string
+        helloworld.v1.Text:
+            type: object
+            properties:
+                content:
+                    type: string
+tags:
+    - name: Greeter

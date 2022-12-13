@@ -1,0 +1,13 @@
+server:
+  http:
+    addr: 0.0.0.0:8000
+    timeout: 1s
+  grpc:
+    addr: 0.0.0.0:9000
+    timeout: 1s
+# gpt 秘钥
+gpt: ""
+# 钉钉机器人
+ding:
+  access_token: ""
+  secret: ""
